@@ -5,12 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp(name = "Scrimmage")
-public class CompCode extends TeleopFunctions{
-    public enum ArmMode {
-        Stack,
-        Moving,
-        Camping
-    }
+public class CompCode extends TeleopFunctions {
 
     @Override
     public void runOpMode() {
@@ -70,18 +65,14 @@ public class CompCode extends TeleopFunctions{
                     stackOneClick = 0;
                 }
 
-
-
-
-
-                //set up modeOneSwitch
-                if (gamepad2.dpad_right){
+                //This is used to make sure that it only changes once
+                /*if (gamepad2.dpad_right){
                     modeOneSwitch += 1;
                 } else if (modeOneSwitch > 2){
                     modeOneSwitch = 2;
                 } else {
                     modeOneSwitch = 0;
-                }
+                }*/
 
                 //set up clawOneClick
                 if (gamepad2.left_bumper){
@@ -103,11 +94,11 @@ public class CompCode extends TeleopFunctions{
 
                 //arm modes switch TODO: Change this from an counting number to an enum to be much more user friendly
                 //why can't this just be add, instead of just checking and setting it to the next one?
-                if (gamepad2.dpad_right && armMode == 0 && modeOneSwitch == 1) {
+                if (gamepad2.dpad_right && armMode == 0 && modeSwitch.isChangeState()/*modeOneSwitch == 1*/) {
                     armMode = 1;
-                } else if (gamepad2.dpad_right && armMode == 1 && modeOneSwitch == 1){
+                } else if (gamepad2.dpad_right && armMode == 1 && modeSwitch.isChangeState()/*modeOneSwitch ==1*/){
                     armMode = 2;
-                } else if (gamepad2.dpad_right && armMode == 2 && modeOneSwitch == 1){
+                } else if (gamepad2.dpad_right && armMode == 2 && modeSwitch.isChangeState()/*modeOneSwitch == 1*/){
                     armMode = 0;
                 }
 
@@ -311,7 +302,7 @@ public class CompCode extends TeleopFunctions{
                             // virtual limit
                             if (elevate_brake_L > 1925 || elevate_brake_R > 1925) {
                                 if (gamepad2.left_stick_y > 0.1) {
-                                    //TODO: could I just use manual elevate here
+                                    //TODO: could I just use manual elevate here?
                                     elevate_brake_L = elevate_Right.getCurrentPosition();
                                     elevate_brake_R = elevate_Right.getCurrentPosition();
                                     elevate_Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

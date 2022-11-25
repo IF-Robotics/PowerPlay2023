@@ -16,9 +16,16 @@ public abstract class TeleopFunctions extends Hardwaremap{
     public int armMode = 0;
     public int stackHeight = 500;
     public int stackOneClick = 0;
-    public int modeOneSwitch = 0;
+    //public int modeOneSwitch = 0;
+    public OneClick modeSwitch = new OneClick(()-> gamepad2.dpad_right);
     public int clawOneClick = 0;
     public int wristOneClick = 0;
+
+    public enum ArmMode {
+        Stack,
+        Moving,
+        Camping
+    }
 
     public void preset(int elevatePosition, double elevatePower, double flipPosition, double wristPosition, double wrist2Position, double clawPosition, int armPosition, double armPower) {
         elevate_Right.setTargetPosition(elevatePosition);
