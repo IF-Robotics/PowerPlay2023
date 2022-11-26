@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.exception.RobotCoreException;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp(name = "Scrimmage")
 public class CompCode extends TeleopFunctions {
+    int count = 0;
 
     @Override
     public void runOpMode() {
@@ -23,6 +25,13 @@ public class CompCode extends TeleopFunctions {
         waitForStart();
         if (opModeIsActive()) {
             while (opModeIsActive()) {
+                try {
+                    previousGamepad2.copy(currentGamepad2);
+                    currentGamepad2.copy(gamepad2);
+                } catch (RobotCoreException e) {
+                    e.printStackTrace();
+                }
+
                 // drive train
                 if (gamepad1.dpad_down) {
                     reverse = true;
@@ -94,12 +103,16 @@ public class CompCode extends TeleopFunctions {
 
                 //arm modes switch TODO: Change this from an counting number to an enum to be much more user friendly
                 //why can't this just be add, instead of just checking and setting it to the next one?
+                modeSwitch.updateState();
                 if (gamepad2.dpad_right && armMode == 0 && modeSwitch.isChangeState()/*modeOneSwitch == 1*/) {
                     armMode = 1;
+                    count++;
                 } else if (gamepad2.dpad_right && armMode == 1 && modeSwitch.isChangeState()/*modeOneSwitch ==1*/){
                     armMode = 2;
+                    count++;
                 } else if (gamepad2.dpad_right && armMode == 2 && modeSwitch.isChangeState()/*modeOneSwitch == 1*/){
                     armMode = 0;
+                    count++;
                 }
 
                 //armMode Lights
@@ -344,6 +357,8 @@ public class CompCode extends TeleopFunctions {
                 telemetry.addData("odopody", front_Right.getCurrentPosition());
                 telemetry.addData("back_Left", back_Leftx.getCurrentPosition());
                 telemetry.addData("distance sensor", distance.getDistance(DistanceUnit.CM));
+                telemetry.addData("changeState", modeSwitch.getState());
+                telemetry.addData("count", count);
                 telemetry.update();
             }
         }

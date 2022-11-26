@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.LED;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -26,6 +27,9 @@ public abstract class Hardwaremap extends LinearOpMode {
     public LED rightGreen;
     public LED rightRed;
     public DistanceSensor distance;
+
+    public Gamepad currentGamepad2 = new Gamepad();
+    public Gamepad previousGamepad2 = new Gamepad();
 
     public void teleopInit() {
         startInit();

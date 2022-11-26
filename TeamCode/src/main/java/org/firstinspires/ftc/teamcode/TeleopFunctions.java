@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 public abstract class TeleopFunctions extends Hardwaremap{
     public double driveTrainPower;
@@ -17,8 +18,9 @@ public abstract class TeleopFunctions extends Hardwaremap{
     public int stackHeight = 500;
     public int stackOneClick = 0;
     //public int modeOneSwitch = 0;
-    public OneClick modeSwitch = new OneClick(()-> gamepad2.dpad_right);
+    public OneClick modeSwitch = new OneClick(()-> gamepad2.dpad_right, ()-> previousGamepad2.dpad_right);
     public int clawOneClick = 0;
+
     public int wristOneClick = 0;
 
     public enum ArmMode {

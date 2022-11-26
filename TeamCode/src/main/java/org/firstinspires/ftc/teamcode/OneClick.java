@@ -14,18 +14,30 @@ public class OneClick {
     }
     private State state = State.off;
     private BooleanSupplier event;
+    private BooleanSupplier previousEvent;
 
-    public OneClick (BooleanSupplier event) {
+    public OneClick (BooleanSupplier event, BooleanSupplier previousEvent) {
         this.event = event;
+        this.previousEvent = previousEvent;
     }
 
-    public void updateState() {
+    /*public void updateState() {
         if (event.getAsBoolean()) {
             if (state == State.off) {
                 state = State.change;
-            } else {
+            } else if (state == State.on || state == State.change){
                 state = State.on;
             }
+        } else if(!event.getAsBoolean()){
+            state = State.off;
+        }
+    }*/
+
+    public void updateState() {
+        if (event.getAsBoolean() && !previousEvent.getAsBoolean()) {
+            state = State.change;
+        } else if (event.getAsBoolean() && previousEvent.getAsBoolean()) {
+            state = State.on;
         } else {
             state = State.off;
         }
@@ -37,15 +49,15 @@ public class OneClick {
     }
 
     public boolean isChangeState() {
-        updateState();
+        //updateState();
         return state == State.change;
     }
     public boolean isOnState() {
-        updateState();
+        //updateState();
         return state == State.on;
     }
     public boolean isOffState() {
-        updateState();
+        //updateState();
         return state == State.off;
     }
 }
