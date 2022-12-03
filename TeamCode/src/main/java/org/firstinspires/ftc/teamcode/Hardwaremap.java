@@ -91,6 +91,11 @@ public abstract class Hardwaremap extends LinearOpMode {
         //TODO: Merge my auto & base structure to help Micah with autos
         startInit();
         claw.setPosition(.59);
+        wrist.setPosition(1);
+        arm.setTargetPosition(30);
+        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        arm.setPower(0.2);
+        flip.setPosition(.3);
     }
 
     private void startInit() {
@@ -114,14 +119,31 @@ public abstract class Hardwaremap extends LinearOpMode {
         distance = hardwareMap.get(DistanceSensor.class, "distance");
 
         //directions
-        back_Right.setDirection(DcMotorSimple.Direction.REVERSE);
-        front_Right.setDirection(DcMotorSimple.Direction.REVERSE);
+        back_Leftx.setDirection(DcMotorSimple.Direction.REVERSE);
+        front_Left.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //zeropowerbehavior
         front_Left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         front_Right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         back_Leftx.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         back_Right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        //drivetrain
+        front_Left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        back_Leftx.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        front_Right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        back_Right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        //elevator
+        elevate_Left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        elevate_Right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        elevate_Left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        elevate_Right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        elevate_Right.setDirection(DcMotorSimple.Direction.FORWARD);
+        elevate_Left.setDirection(DcMotorSimple.Direction.REVERSE);
+        elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
         //imu
         // Retrieve the IMU from the hardware map

@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
+@Disabled
 public class BasicAuto extends CameraShortcut {
 
     @Override
@@ -12,9 +14,17 @@ public class BasicAuto extends CameraShortcut {
         initCamera();
         autoInit();
         waitForStart();
+        //if you want to default a position set it equal to signalPosition.One, signalPosition.Two, signalPosition.Three instead of getSignalPosition
         signalPosition position = getSignalPosition();
         telemetry.addData("Position", position);
         telemetry.update();
+
+        //write cone scoring code here
+
+
+
+
+
 
         switch(position) {
             case One:
@@ -30,6 +40,7 @@ public class BasicAuto extends CameraShortcut {
                 zoneOnePath();
         }
     }
+    //these go to the positions, so you change these values to whatever you want
 
     public void zoneThreePath() {
         strafe(.5, -1, 1500);
