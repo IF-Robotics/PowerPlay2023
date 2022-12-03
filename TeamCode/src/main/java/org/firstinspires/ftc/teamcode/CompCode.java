@@ -233,6 +233,7 @@ public class CompCode extends TeleopFunctions {
                 }
 
                 // Wrist Move
+                //TODO: Ask Wyatt why these are .2 and .7 for elevatePower
                 if (gamepad2.right_bumper && !wristStatus && wristOneClick == 1) {
                     isElevatorUsed = true;
                     wrist.setPosition(1);
@@ -320,8 +321,8 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = true;
                     elevate_Right.setTargetPosition(1630);
                     elevate_Left.setTargetPosition(1630);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_brake_R = 1630;
@@ -339,8 +340,8 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = true;
                     elevate_Right.setTargetPosition(1850);
                     elevate_Left.setTargetPosition(1850);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(0.62);
@@ -358,8 +359,8 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = true;
                     elevate_Right.setTargetPosition(1110);
                     elevate_Left.setTargetPosition(1110);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(0.62);
@@ -378,8 +379,8 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = true;
                     elevate_Right.setTargetPosition(1620);
                     elevate_Left.setTargetPosition(1620);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setTargetPosition(1370);
@@ -396,8 +397,8 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = true;
                     elevate_Right.setTargetPosition(920);
                     elevate_Left.setTargetPosition(920);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setTargetPosition(1370);
@@ -413,8 +414,8 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = true;
                     elevate_Right.setTargetPosition(330);
                     elevate_Left.setTargetPosition(330);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setTargetPosition(1370);
@@ -436,9 +437,9 @@ public class CompCode extends TeleopFunctions {
                     isElevatorUsed = false;
                     softStopBehavior = SoftStopBehavior.Down_And_Open;
                 } else if (gamepad2.cross && armMode == 1) {
-                    preset(200, 1, .3, 1, 0, .69, 20, .5);
+                    preset(200, 1, .3, 1, 0, .69, 20, .6);
                 } else if (gamepad2.cross && armMode == 2 && stackOneClick == 1) {
-                    preset(stackHeight, 1, .3, .61, .39, .93, 50, .5);
+                    preset(stackHeight, 1, .3, .61, .39, .93, 50, .6);
                     stackHeight -= 90;
                     if (stackHeight < 0) {
                         stackHeight = 350;
