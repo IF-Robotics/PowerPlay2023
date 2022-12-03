@@ -19,12 +19,12 @@ public class ConeAuto extends CameraShortcut {
 
         //write cone scoring code here
 
-            //strafe right
-                front_Left.setPower(-.6);
-                back_Right.setPower(-.6);
-                front_Right.setPower(.3);
-                back_Leftx.setPower(.3);
-                sleep(550);
+            //strafe Left
+                front_Left.setPower(.3);
+                back_Right.setPower(.3);
+                front_Right.setPower(-.6);
+                back_Leftx.setPower(-.6);
+                sleep(380);
                 front_Left.setPower(0);
                 back_Right.setPower(0);
                 front_Right.setPower(0);
@@ -35,7 +35,7 @@ public class ConeAuto extends CameraShortcut {
                 back_Right.setPower(.4);
                 front_Right.setPower(.4);
                 back_Leftx.setPower(.4);
-                sleep(2180);
+                sleep(2100);
                 front_Left.setPower(0);
                 back_Right.setPower(0);
                 front_Right.setPower(0);
@@ -56,7 +56,7 @@ public class ConeAuto extends CameraShortcut {
             //turn left
                 front_Right.setPower(.2);
                 back_Right.setPower(.2);
-                sleep(1300);
+                sleep(1280);
                 front_Right.setPower(0);
                 back_Right.setPower(0);
                 sleep(1000);
