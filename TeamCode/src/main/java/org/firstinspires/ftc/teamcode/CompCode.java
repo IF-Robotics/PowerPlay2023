@@ -237,11 +237,7 @@ public class CompCode extends TeleopFunctions {
                         tail.setPosition(.53);
                         softStopOn(SoftStopBehavior.Down, .3);
                     } else {
-                        if(armMode == 1) {
-                            claw.setPosition(.93);
-                        } else {
-                            claw.setPosition(.8);
-                        }
+                        claw.setPosition(.96);
                     }
                     clawStatus = false;
                 }
@@ -297,8 +293,8 @@ public class CompCode extends TeleopFunctions {
                         clawStatus = true;
                         clawTimer.reset();
                         clawStatus = true;
-                        wrist.setPosition(4.5);
-                        wrist2.setPosition(5.5);
+                        wrist.setPosition(.35);
+                        wrist2.setPosition(.65);
                         if (campingMode == 0) {
                             tail.setPosition(.3);
                         } else if (campingMode == 1) {
@@ -460,7 +456,7 @@ public class CompCode extends TeleopFunctions {
                     //armode 0 = camping = red, armode 1 = moving = greed, armode 2 = stacks = red and green
 
 
-                } else if (gamepad2.cross && armMode == 0 && !isSoftStop) {
+                } else if (gamepad2.cross && armMode == 0 /*&& !isSoftStop*/) {
                     tail.setPosition(.53);
                     preset(90, 1, .3, .61, .39, .93, 20, .5);
                     isElevatorUsed = false;
@@ -510,7 +506,7 @@ public class CompCode extends TeleopFunctions {
                             }
                         } else {
                             // High virtual limit
-                            if (!isElevatorUsed && elevate_brake_L > 2000 || elevate_brake_R > 2000) {
+                            if (!isElevatorUsed && elevate_brake_L > 2100 || elevate_brake_R > 2100) {
                                 if (gamepad2.left_stick_y > 0.1) {
                                     //TODO: could I just use manual elevate here
                                     elevate_brake_L = elevate_Right.getCurrentPosition();
