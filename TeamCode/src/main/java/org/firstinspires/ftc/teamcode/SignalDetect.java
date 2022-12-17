@@ -51,11 +51,11 @@ public class SignalDetect extends OpenCvPipeline {
         Imgproc.GaussianBlur(inputResized, dst, new Size(5,5), 0);
         Imgproc.cvtColor(dst, hsv, Imgproc.COLOR_RGB2HSV);
         //Core.inRange(hsv, new Scalar(9,137,196), new Scalar(13,194,204), gtresh);
-        Core.inRange(hsv, new Scalar(0,46/100*255,180), new Scalar(20,210,210), otresh); //orange
+        Core.inRange(hsv, new Scalar(5,46/100*255,180), new Scalar(20,210,210), otresh); //orange
 //        Core.inRange(hsv, new Scalar(129,89,163), new Scalar(134,173,79), ytresh); //purple
         Core.inRange(hsv, new Scalar(120,80,75), new Scalar(145,185,170), ptresh); //purple
 //        Core.inRange(hsv, new Scalar(137/2,9/100*255,68/100*255), new Scalar(121/2,134/100*255,128/100*255), gtresh); //green
-        Core.inRange(hsv, new Scalar(145/2,30/100*255,55/100*255), new Scalar(165/2,120/100*255,120/100*255), gtresh); //green
+        Core.inRange(hsv, new Scalar(150/2,30/100*255,55/100*255), new Scalar(165/2,120/100*255,120/100*255), gtresh); //green
 
         Imgproc.findContours(otresh, ocontours, ohierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_NONE);
         Imgproc.findContours(ptresh, pcontours, phierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_NONE);

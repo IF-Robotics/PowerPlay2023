@@ -87,7 +87,7 @@ public abstract class Hardwaremap extends LinearOpMode {
         arm.setPower(1);
         flip.setPosition(0.25);
         wrist.setPosition(1);
-        wrist2.setPosition(0);
+        wrist2.setPosition(1);
         claw.setPosition(0.7);
         tail.setPosition(.53);
 
@@ -175,6 +175,7 @@ public abstract class Hardwaremap extends LinearOpMode {
         flip = hardwareMap.get(Servo.class, "flip");
         wrist = hardwareMap.get(Servo.class, "wrist");
         wrist2 = hardwareMap.get(Servo.class, "wrist2");
+        wrist2.setDirection(Servo.Direction.REVERSE);
         claw = hardwareMap.get(Servo.class, "claw");
         tail = hardwareMap.get(Servo.class, "tail");
         leftGreen = hardwareMap.get(LED.class, "leftGreen");

@@ -248,7 +248,7 @@ public class CompCode extends TeleopFunctions {
                     tail.setPosition(.53);
                     flip.setPosition(.25);
                     wrist.setPosition(1);
-                    wrist2.setPosition(0);
+                    //wrist2.setPosition(0);
                     claw.setPosition(0.7);
                     elevate_Right.setTargetPosition(220);
                     elevate_Left.setTargetPosition(220);
@@ -264,7 +264,7 @@ public class CompCode extends TeleopFunctions {
                 } else if (gamepad2.right_trigger > .1) {
                     isElevatorUsed = true;
                     wrist.setPosition(0.61);
-                    wrist2.setPosition(0.39);
+                    //wrist2.setPosition(0.39);
                     claw.setPosition(0.99);
                     elevate_Right.setTargetPosition(90);
                     elevate_Left.setTargetPosition(90);
@@ -294,7 +294,7 @@ public class CompCode extends TeleopFunctions {
                         clawTimer.reset();
                         clawStatus = true;
                         wrist.setPosition(.35);
-                        wrist2.setPosition(.65);
+                        //wrist2.setPosition(.65);
                         if (campingMode == 0) {
                             tail.setPosition(.3);
                         } else if (campingMode == 1) {
@@ -319,7 +319,7 @@ public class CompCode extends TeleopFunctions {
                     arm.setTargetPosition(1370);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(.61);
-                    wrist2.setPosition(.39);
+                    //wrist2.setPosition(.39);
                     flip.setPosition(0.97);
                     arm.setPower(0.35);
                     elevate_brake_R = 1620;
@@ -350,7 +350,7 @@ public class CompCode extends TeleopFunctions {
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setPower(0.6);
                     wrist.setPosition(0.4);
-                    wrist2.setPosition(0.6);
+                    //wrist2.setPosition(0.6);
                     flip.setPosition(0.3);
                     height = Height.High;
                 }
@@ -365,7 +365,7 @@ public class CompCode extends TeleopFunctions {
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(0.62);
-                    wrist2.setPosition(0.38);
+                    //wrist2.setPosition(0.38);
                     arm.setTargetPosition(0);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setPower(0.6);
@@ -385,7 +385,7 @@ public class CompCode extends TeleopFunctions {
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(0.62);
-                    wrist2.setPosition(0.38);
+                    //wrist2.setPosition(0.38);
                     arm.setTargetPosition(0);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setPower(0.6);
@@ -408,7 +408,7 @@ public class CompCode extends TeleopFunctions {
                     arm.setTargetPosition(1370);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(.55);
-                    wrist2.setPosition(.45);
+                   // wrist2.setPosition(.45);
                     flip.setPosition(0.97);
                     arm.setPower(0.3);
                     elevate_brake_R = 1620;
@@ -428,7 +428,7 @@ public class CompCode extends TeleopFunctions {
                     arm.setTargetPosition(1370);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(.55);
-                    wrist2.setPosition(.45);
+                    //wrist2.setPosition(.45);
                     flip.setPosition(0.97);
                     arm.setPower(0.3);
                     elevate_brake_R = 920;
@@ -446,7 +446,7 @@ public class CompCode extends TeleopFunctions {
                     arm.setTargetPosition(1370);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(.55);
-                    wrist2.setPosition(.45);
+                   // wrist2.setPosition(.45);
                     flip.setPosition(0.97);
                     arm.setPower(0.3);
                     elevate_brake_R = 372;
@@ -567,6 +567,7 @@ public class CompCode extends TeleopFunctions {
 
                 telemetry.update();
 
+                //wrist2.setPosition(wrist.getPosition());
             }
         }
     }
