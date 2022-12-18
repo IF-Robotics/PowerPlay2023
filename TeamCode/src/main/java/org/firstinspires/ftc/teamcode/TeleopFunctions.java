@@ -29,6 +29,8 @@ public abstract class TeleopFunctions extends Hardwaremap{
     public boolean isSoftStopReset = true;
     public double softStopTime = 0;
     public double softStopClawPosition = -1;
+    public double softStopFlipPosition = -1;
+    public int softStopElevatePosition = 90;
     public ElapsedTime clawTimer = new ElapsedTime();
     public ElapsedTime tailWait = new ElapsedTime();
 
@@ -43,7 +45,7 @@ public abstract class TeleopFunctions extends Hardwaremap{
         elevate_Right.setPower(elevatePower);
         flip.setPosition(flipPosition);
         wrist.setPosition(wristPosition);
-        wrist2.setPosition(wrist2Position);
+        //wrist2.setPosition(wrist2Position);
         claw.setPosition(clawPosition);
         arm.setTargetPosition(armPosition);
         arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -96,8 +98,8 @@ public abstract class TeleopFunctions extends Hardwaremap{
         isElevatorUsed = true;
         flip.setPosition(.3);
         tail.setPosition(.53);
-        wrist.setPosition(0.61);
-        wrist2.setPosition(0.39);
+        wrist.setPosition(0.69);
+        //wrist2.setPosition(0.39);
         elevate_Right.setTargetPosition(90);
         elevate_Left.setTargetPosition(90);
         elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -115,7 +117,7 @@ public abstract class TeleopFunctions extends Hardwaremap{
         elevate_Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         elevate_Left.setPower(-0.7);
         elevate_Right.setPower(-0.7);
-        sleep(500);
+        sleep(300);
         while (((DcMotorEx) elevate_Left).getVelocity() <= -200 && opModeIsActive()) {
             telemetry.addData("velocity", ((DcMotorEx) back_Leftx).getVelocity());
             telemetry.update();
@@ -123,8 +125,8 @@ public abstract class TeleopFunctions extends Hardwaremap{
         elevate_Left.setPower(.1);
         elevate_Right.setPower(.1);
         arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        arm.setPower(-0.7);
-        sleep(500);
+        arm.setPower(-1);
+        sleep(300);
         while (((DcMotorEx) arm).getVelocity() < -200 && opModeIsActive()) {
             telemetry.addData("velocity", ((DcMotorEx) arm).getVelocity());
             telemetry.update();
@@ -153,9 +155,12 @@ public abstract class TeleopFunctions extends Hardwaremap{
     }
 
     //don't use bc glitch with claw position
-    public void softStopOn(SoftStopBehavior behavior, double time, double clawPosition) {
+    public void softStopOn(SoftStopBehavior behavior, double time, double clawPosition, double flipPosition, int elevatePosition) {
         softStopOn(behavior, time);
         softStopClawPosition = clawPosition;
+        softStopFlipPosition = flipPosition;
+        softStopElevatePosition = elevatePosition;
+        softStopTimer.reset();
     }
 
     public void softStopOff() {
@@ -166,10 +171,10 @@ public abstract class TeleopFunctions extends Hardwaremap{
             if(softStopClawPosition == -1) {
                 claw.setPosition(.93);
                 isElevatorUsed = true;
-                preset(90, 1, .3, .61, .39, .93, 20, .5);
+                preset(softStopElevatePosition, 1, softStopFlipPosition, .66, .39, .93, 3, .5);
             } else {
                 isElevatorUsed = true;
-                preset(90, 1, .3, .61, .39, softStopClawPosition, 20, .5);
+                preset(softStopElevatePosition, 1, softStopFlipPosition, .66, .39, softStopClawPosition, 3, .5);
             }
         } else if(softStopBehavior == softStopBehavior.Down) {
             //claw.setPosition(.61);
@@ -177,6 +182,8 @@ public abstract class TeleopFunctions extends Hardwaremap{
             telemetry.addLine("Error: SoftStop has no mode");
         }
         softStopClawPosition = -1;
+        softStopFlipPosition = .3;
+        softStopElevatePosition = 90;
         elevateSetRunToPosition();
         //timer.reset();
         isSoftStop = false;

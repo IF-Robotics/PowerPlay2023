@@ -288,6 +288,7 @@ public class CompCode extends TeleopFunctions {
                 //driver 1 camping
                 if (gamepad1.right_trigger > .1) {
                     //up
+
                     claw.setPosition(0.69);
                         claws = true;
                         clawStatus = true;
@@ -302,26 +303,36 @@ public class CompCode extends TeleopFunctions {
                         }
                 } else if (gamepad1.left_trigger > .1) {
                     //down
-                    softStopOn(SoftStopBehavior.Down_And_Open, .2);
+                    softStopOn(SoftStopBehavior.Down_And_Open, .25, -1, .317, 2);
                     isElevatorUsed = false;
+                    elevate_Right.setTargetPosition(5);
+                    elevate_Left.setTargetPosition(5);
+                    elevate_Right.setPower(0.7);
+                    elevate_Left.setPower(0.7);
+                    elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    elevate_brake_R = 5;
+                    elevate_brake_L = 5;
+                    wrist.setPosition(.7);
+                    //flip.setPosition(.317);
                     claws = false;
                     tailWait.reset();
 
                 }
                 if(clawTimer.seconds() > .2 && clawTimer.seconds() < .3) {
                     isElevatorUsed = true;
-                    elevate_Right.setTargetPosition(1700);
-                    elevate_Left.setTargetPosition(1700);
-                    elevate_Right.setPower(0.7);
-                    elevate_Left.setPower(0.7);
+                    elevate_Right.setTargetPosition(1850);
+                    elevate_Left.setTargetPosition(1850);
+                    elevate_Right.setPower(1);
+                    elevate_Left.setPower(1);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setTargetPosition(1370);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     wrist.setPosition(.61);
                     //wrist2.setPosition(.39);
-                    flip.setPosition(0.97);
-                    arm.setPower(0.35);
+                    flip.setPosition(0.95);
+                    arm.setPower(0.25);
                     elevate_brake_R = 1620;
                     elevate_brake_L = 1620;
                     //preset(1620, .7, .95)
@@ -338,18 +349,18 @@ public class CompCode extends TeleopFunctions {
                 if (gamepad2.dpad_up) {
                     isElevatorUsed = true;
                     tail.setPosition(.53);
-                    elevate_Right.setTargetPosition(1630);
-                    elevate_Left.setTargetPosition(1630);
+                    elevate_Right.setTargetPosition(1370);
+                    elevate_Left.setTargetPosition(1370);
                     elevate_Right.setPower(0.7);
                     elevate_Left.setPower(0.7);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    elevate_brake_R = 1630;
-                    elevate_brake_L = 1630;
-                    arm.setTargetPosition(500);
+                    elevate_brake_R = 1370;
+                    elevate_brake_L = 1370;
+                    arm.setTargetPosition(930);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setPower(0.6);
-                    wrist.setPosition(0.4);
+                    wrist.setPosition(0.24);
                     //wrist2.setPosition(0.6);
                     flip.setPosition(0.3);
                     height = Height.High;
@@ -358,40 +369,40 @@ public class CompCode extends TeleopFunctions {
                 if (gamepad2.dpad_left) {
                     isElevatorUsed = true;
                     tail.setPosition(.53);
-                    elevate_Right.setTargetPosition(1850);
-                    elevate_Left.setTargetPosition(1850);
+                    elevate_Right.setTargetPosition(810);
+                    elevate_Left.setTargetPosition(810);
                     elevate_Right.setPower(0.7);
                     elevate_Left.setPower(0.7);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    wrist.setPosition(0.62);
+                    wrist.setPosition(0.24);
                     //wrist2.setPosition(0.38);
-                    arm.setTargetPosition(0);
+                    arm.setTargetPosition(930);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setPower(0.6);
                     flip.setPosition(0.3);
-                    elevate_brake_R = 1788;
-                    elevate_brake_L = 1788;
+                    elevate_brake_R = 810;
+                    elevate_brake_L = 810;
                     height = Height.Medium;
                 }
 
                 if (gamepad2.dpad_down) {
                     isElevatorUsed = true;
                     tail.setPosition(.53);
-                    elevate_Right.setTargetPosition(1110);
-                    elevate_Left.setTargetPosition(1110);
+                    elevate_Right.setTargetPosition(0);
+                    elevate_Left.setTargetPosition(0);
                     elevate_Right.setPower(0.7);
                     elevate_Left.setPower(0.7);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    wrist.setPosition(0.62);
+                    wrist.setPosition(0.24);
                     //wrist2.setPosition(0.38);
-                    arm.setTargetPosition(0);
+                    arm.setTargetPosition(930);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     arm.setPower(0.6);
                     flip.setPosition(0.3);
-                    elevate_brake_R = 1110;
-                    elevate_brake_L = 1110;
+                    elevate_brake_R = 0;
+                    elevate_brake_L = 0;
                     height = Height.Low;
                 }
 
@@ -399,58 +410,58 @@ public class CompCode extends TeleopFunctions {
                 if (gamepad2.triangle) {
                     isElevatorUsed = true;
                     tail.setPosition(.53);
-                    elevate_Right.setTargetPosition(1700);
-                    elevate_Left.setTargetPosition(1700);
+                    elevate_Right.setTargetPosition(1200+100);
+                    elevate_Left.setTargetPosition(1200);
                     elevate_Right.setPower(0.7);
                     elevate_Left.setPower(0.7);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    arm.setTargetPosition(1370);
+                    arm.setTargetPosition(930);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    wrist.setPosition(.55);
+                    wrist.setPosition(.83);
                    // wrist2.setPosition(.45);
                     flip.setPosition(0.97);
                     arm.setPower(0.3);
-                    elevate_brake_R = 1620;
-                    elevate_brake_L = 1620;
+                    elevate_brake_R = 1200;
+                    elevate_brake_L = 1200;
                     tail.setPosition(.53);
                     //preset(1620, .7, .95)
                     height = Height.High;
                 } else if (gamepad2.square) {
                     isElevatorUsed = true;
                     tail.setPosition(.53);
-                    elevate_Right.setTargetPosition(920);
-                    elevate_Left.setTargetPosition(920);
+                    elevate_Right.setTargetPosition(520+90);
+                    elevate_Left.setTargetPosition(520);
                     elevate_Right.setPower(0.7);
                     elevate_Left.setPower(0.7);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    arm.setTargetPosition(1370);
+                    arm.setTargetPosition(930);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    wrist.setPosition(.55);
+                    wrist.setPosition(.83);
                     //wrist2.setPosition(.45);
                     flip.setPosition(0.97);
                     arm.setPower(0.3);
-                    elevate_brake_R = 920;
-                    elevate_brake_L = 920;
+                    elevate_brake_R = 520;
+                    elevate_brake_L = 520;
                     height = Height.Medium;
                 } else if (gamepad2.circle) {
                     isElevatorUsed = true;
                     tail.setPosition(.53);
-                    elevate_Right.setTargetPosition(330);
-                    elevate_Left.setTargetPosition(330);
+                    elevate_Right.setTargetPosition(0);
+                    elevate_Left.setTargetPosition(0);
                     elevate_Right.setPower(0.7);
                     elevate_Left.setPower(0.7);
                     elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    arm.setTargetPosition(1370);
+                    arm.setTargetPosition(930);
                     arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    wrist.setPosition(.55);
+                    wrist.setPosition(.83);
                    // wrist2.setPosition(.45);
                     flip.setPosition(0.97);
                     arm.setPower(0.3);
-                    elevate_brake_R = 372;
-                    elevate_brake_L = 372;
+                    elevate_brake_R = 0;
+                    elevate_brake_L = 0;
                     height = Height.Low;
 
                     //armode 0 = camping = red, armode 1 = moving = greed, armode 2 = stacks = red and green
@@ -458,14 +469,14 @@ public class CompCode extends TeleopFunctions {
 
                 } else if (gamepad2.cross && armMode == 0 /*&& !isSoftStop*/) {
                     tail.setPosition(.53);
-                    preset(90, 1, .3, .61, .39, .93, 20, .5);
+                    preset(90, 1, .3, .69, .39, .93, 20, .5);
                     isElevatorUsed = false;
                 } else if (gamepad2.cross && armMode == 1) {
                     tail.setPosition(.53);
                     preset(200, 1, .3, 1, 0, .69, 20, .5);
                 } else if (gamepad2.cross && armMode == 2 && stackOneClick == 1) {
                     tail.setPosition(.53);
-                    preset(stackHeight, 1, .3, .61, .39, .93, 50, .5);
+                    preset(stackHeight, 1, .3, .69, .39, .93, 50, .5);
                     stackHeight -= 80;
                     if (stackHeight < 0) {
                         stackHeight = 400;
@@ -479,7 +490,7 @@ public class CompCode extends TeleopFunctions {
                 } else {
                     //low virtual limit
                     if (!elevate_Right.isBusy() && !isElevatorUsed) {
-                        if (elevate_brake_L < 200 || elevate_brake_R < 200) {
+                        if (elevate_brake_L < 50 || elevate_brake_R < 50) {
                             elevate_brake_R = elevate_Left.getCurrentPosition();
                             elevate_brake_L = elevate_Right.getCurrentPosition();
                             elevate_Left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -489,11 +500,11 @@ public class CompCode extends TeleopFunctions {
                                 elevate_Right.setPower(-1 * gamepad2.left_stick_y);
                             } else {
                                 if (armMode == 0) {
-                                    elevate_Left.setTargetPosition(100);
-                                    elevate_Right.setTargetPosition(100);
+//                                    elevate_Left.setTargetPosition(100);
+//                                    elevate_Right.setTargetPosition(100);
                                 } else if (armMode == 1) {
-                                    elevate_Left.setTargetPosition(100);
-                                    elevate_Right.setTargetPosition(100);
+//                                    elevate_Left.setTargetPosition(100);
+//                                    elevate_Right.setTargetPosition(100);
                                 } else {
                                     elevate_Left.setTargetPosition(stackHeight);
                                     elevate_Right.setTargetPosition(stackHeight);
@@ -564,10 +575,11 @@ public class CompCode extends TeleopFunctions {
                 telemetry.addData("isSoftStopReset", isSoftStopReset);
                 telemetry.addData("softStopBehavior", softStopBehavior);
                 telemetry.addData("softStopTime", softStopTime);
+                telemetry.addData("flip", flip.getPosition());
 
                 telemetry.update();
 
-                //wrist2.setPosition(wrist.getPosition());
+                wrist2.setPosition(wrist.getPosition());
             }
         }
     }

@@ -37,20 +37,29 @@ public class BasicAuto extends OpenCVAuto {
 //            default:
 //                zoneOnePath();
 //        }
+
+        if(position == 1) {
+            zoneOnePath();
+        } else if (position == 2) {
+            zoneTwoPath();
+        } else{
+            zoneThreePath();
+        }
+        //zoneOnePath();
     }
 
     public void zoneThreePath() {
-        strafe(.5, -1, 1100);
-        drive(.3, -1, 2500);
+        strafe(.5, -1, 1500);
+        drive(.6, -1, 700);
         drive(.5, 1, 1500);
     }
     public void zoneTwoPath() {
-        
+        drive(.5, -1, 300);
         drive(.5, 1, 1500);
     }
     public void zoneOnePath() {
-        strafe(.5, 1, 1100);
-        drive(.3, -1, 2500);
+        strafe(.5, 1, 1300);
+        drive(.6, -1, 700);
         drive(.5, 1, 1500);
     }
 }
