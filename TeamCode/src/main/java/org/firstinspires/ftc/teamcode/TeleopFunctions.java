@@ -62,12 +62,15 @@ public abstract class TeleopFunctions extends Hardwaremap{
     }
 
     public void manualElevate(double elevatePower) {
-        elevate_Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        elevate_Right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        elevate_brake_R = elevate_Left.getCurrentPosition();
-        elevate_brake_L = elevate_Right.getCurrentPosition();
-        elevate_Left.setPower(elevatePower * gamepad2.left_stick_y);
-        elevate_Right.setPower(elevatePower * gamepad2.left_stick_y);
+//        elevate_Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        elevate_Right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        elevate_brake_R = elevate_Left.getCurrentPosition();
+//        elevate_brake_L = elevate_Right.getCurrentPosition();
+//        elevate_Left.setPower(elevatePower * gamepad2.left_stick_y);
+//        elevate_Right.setPower(elevatePower * gamepad2.left_stick_y);
+        elevate_brake_R = elevate_brake_R + (int) (10 /* elevatePower*/ * gamepad2.left_stick_y);
+        elevate_brake_L = elevate_brake_L + (int) (10 /* elevatePower*/ * gamepad2.left_stick_y);
+        elevatePosition(elevate_brake_L, elevate_brake_R, 1);
     }
     public void elevatePosition (int leftPosition, int rightPosition, double power) {
         elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
