@@ -490,7 +490,7 @@ public class CompCode extends TeleopFunctions {
                     softStopOff();
                 } else {
                     //low virtual limit
-                    if (!elevate_Right.isBusy() && !isElevatorUsed) {
+                    if (/*!elevate_Right.isBusy() &&*/ !isElevatorUsed) {
                         if (elevate_brake_L < 50 || elevate_brake_R < 50) {
                             elevate_brake_R = elevate_Left.getCurrentPosition();
                             elevate_brake_L = elevate_Right.getCurrentPosition();
