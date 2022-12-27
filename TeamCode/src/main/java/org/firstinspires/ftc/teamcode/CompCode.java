@@ -471,6 +471,7 @@ public class CompCode extends TeleopFunctions {
                     tail.setPosition(.53);
                     preset(90, 1, .3, .69, .39, .93, 20, .5);
                     isElevatorUsed = false;
+                    clawStatus = false;
                 } else if (gamepad2.cross && armMode == 1) {
                     tail.setPosition(.53);
                     preset(200, 1, .3, 1, 0, .69, 20, .5);
