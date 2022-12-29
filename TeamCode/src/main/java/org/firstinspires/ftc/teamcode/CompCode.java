@@ -303,7 +303,7 @@ public class CompCode extends TeleopFunctions {
                         }
                 } else if (gamepad1.left_trigger > .1) {
                     //down
-                    softStopOn(SoftStopBehavior.Down_And_Open, .25, -1, .317, 2);
+                    softStopOn(SoftStopBehavior.Down_And_Open, .25, -1, .317, 60);
                     isElevatorUsed = false;
                     elevate_Right.setTargetPosition(5);
                     elevate_Left.setTargetPosition(5);
@@ -501,11 +501,11 @@ public class CompCode extends TeleopFunctions {
                                 elevate_Right.setPower(-1 * gamepad2.left_stick_y);
                             } else {
                                 if (armMode == 0) {
-//                                    elevate_Left.setTargetPosition(100);
-//                                    elevate_Right.setTargetPosition(100);
+                                    elevate_Left.setTargetPosition(100);
+                                    elevate_Right.setTargetPosition(100);
                                 } else if (armMode == 1) {
-//                                    elevate_Left.setTargetPosition(100);
-//                                    elevate_Right.setTargetPosition(100);
+                                    elevate_Left.setTargetPosition(100);
+                                    elevate_Right.setTargetPosition(100);
                                 } else {
                                     elevate_Left.setTargetPosition(stackHeight);
                                     elevate_Right.setTargetPosition(stackHeight);
