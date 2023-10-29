@@ -12,15 +12,14 @@ public class BasicAuto extends OpenCVAuto {
         //initCamera();
         telemetry.addData("Waiting...", 1);
         telemetry.update();
-        autoInit();
+
         telemetry.addData("done", 2);
         telemetry.update();
 //        SignalDetect.Largest position = aPipe.getColor();
-        int position = aPipe.getColor();
+
 //        waitForStart();
         while(!isStarted()) {
-            position = aPipe.getColor();
-            telemetry.addData("position", position);
+
             telemetry.update();
         }
 

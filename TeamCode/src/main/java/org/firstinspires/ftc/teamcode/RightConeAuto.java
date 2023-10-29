@@ -54,17 +54,7 @@ public class RightConeAuto extends CameraShortcut {
         front_Right.setPower(0);
         back_Leftx.setPower(0);
         //bring down wrist and raise the elevator and bring the arm up
-        wrist.setPosition(.39);
-        wrist2.setPosition(.61);
-        arm.setTargetPosition(500);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setPower(0.2);
-        elevate_Right.setTargetPosition(1700);
-        elevate_Left.setTargetPosition(1700);
-        elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Right.setPower(0.8);
-        elevate_Left.setPower(0.8);
+
         sleep(2000);
         //turn left
         front_Right.setPower(.2);
@@ -74,21 +64,11 @@ public class RightConeAuto extends CameraShortcut {
         back_Right.setPower(0);
         sleep(1000);
         //lower and then drop the cone, then bring the elevator back up
-        elevate_Right.setTargetPosition(1230);
-        elevate_Left.setTargetPosition(1230);
-        elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Right.setPower(1);
-        elevate_Left.setPower(1);
+
         sleep(500);
-        claw.setPosition(.93);
+
         sleep(300);
-        elevate_Right.setTargetPosition(1700);
-        elevate_Left.setTargetPosition(1700);
-        elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Right.setPower(1);
-        elevate_Left.setPower(1);
+
         sleep(500);
         //turn right
         front_Right.setPower(-.2);
@@ -98,18 +78,7 @@ public class RightConeAuto extends CameraShortcut {
         back_Right.setPower(0);
         sleep(1000);
         //reset the arm, wrist and elevator
-        elevate_Right.setTargetPosition(20);
-        elevate_Left.setTargetPosition(20);
-        elevate_Right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevate_Right.setPower(0.9);
-        elevate_Left.setPower(0.9);
-        arm.setTargetPosition(10);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setPower(0.2);
-        wrist.setPosition(1);
-        wrist2.setPosition(0);
-        claw.setPosition(.69);
+
         sleep(1000);
         //go forward
         front_Left.setPower(.4);
